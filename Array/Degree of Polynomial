@@ -1,0 +1,93 @@
+Degree of Polynomial
+
+In mathematics, the degree of polynomials in one variable is the highest power of the variable in the algebraic expression with non-zero coefficient.
+
+Chef has a polynomial in one variable xx with NN terms. The polynomial looks like A0⋅x0+A1⋅x1+…+AN−2⋅xN−2+AN−1⋅xN−1A0​⋅x0+A1​⋅x1+…+AN−2​⋅xN−2+AN−1​⋅xN−1 where Ai−1Ai−1​ denotes the coefficient of the ithith term xi−1xi−1 for all (1≤i≤N)(1≤i≤N).
+
+Find the degree of the polynomial.
+
+Note: It is guaranteed that there exists at least one term with non-zero coefficient.
+Input Format
+
+    First line will contain TT, number of test cases. Then the test cases follow.
+    First line of each test case contains of a single integer NN - the number of terms in the polynomial.
+    Second line of each test case contains of NN space-separated integers - the ithith integer Ai−1Ai−1​ corresponds to the coefficient of xi−1xi−1.
+
+Output Format
+
+For each test case, output in a single line, the degree of the polynomial.
+Constraints
+
+    1≤T≤1001≤T≤100
+    1≤N≤10001≤N≤1000
+    −1000≤Ai≤1000−1000≤Ai​≤1000
+    Ai≠0 for at least one (0≤i<N)(0≤i<N).
+
+Sample 1:
+Input
+4
+1
+5
+2
+-3 3
+3
+0 0 5
+4
+1 2 4 0
+
+Output
+0
+1
+2
+2
+
+Explanation:
+
+Test case 11: There is only one term x0x0 with coefficient 55. Thus, we are given a constant polynomial and the degree is 00.
+
+Test case 22: The polynomial is −3⋅x0+3⋅x1=−3+3⋅x−3⋅x0+3⋅x1=−3+3⋅x. Thus, the highest power of xx with non-zero coefficient is 11.
+
+Test case 33: The polynomial is 0⋅x0+0⋅x1+5⋅x2=0+0+5⋅x20⋅x0+0⋅x1+5⋅x2=0+0+5⋅x2. Thus, the highest power of xx with non-zero coefficient is 22.
+
+Test case 44: The polynomial is 1⋅x0+2⋅x1+4⋅x2+0⋅x3=1+2⋅x+4⋅x21⋅x0+2⋅x1+4⋅x2+0⋅x3=1+2⋅x+4⋅x2. Thus, the highest power of xx with non-zero coefficient is 22.
+
+
+
+
+
+Solution:
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t, n;
+    
+    // Input the number of test cases
+    cin >> t;
+    
+    while (t--) {
+        // Input the number of terms in the polynomial
+        cin >> n;
+        
+        // Declare an array to store the coefficients of the polynomial
+        int arr[n];
+        
+        // Input the coefficients of the polynomial
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        
+        // Loop from the last term to the first term to find the highest power with a non-zero coefficient
+        for (int j = n - 1; j >= 0; j--) {
+            // If the coefficient is non-zero, print the index (degree of the polynomial) and break the loop
+            if (arr[j] != 0) {
+                cout << j << endl;
+                break;
+            }
+        }
+    }
+    
+    return 0;
+}
+
+
