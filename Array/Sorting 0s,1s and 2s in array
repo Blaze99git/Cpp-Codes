@@ -1,0 +1,43 @@
+//Given an array of size N containing only 0s, 1s, and 2s; sort the array in ascending order.
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // Input the number of elements in the array
+    int n;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
+    
+    // Declare the array to hold the elements
+    int arr[n];
+    
+    // Input the elements of the array (only 0s, 1s, and 2s)
+    cout << "Enter the elements of the array (only 0s, 1s, and 2s): ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    // Count the number of 0s, 1s, and 2s
+    int count0 = 0, count1 = 0, count2 = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == 0) count0++;
+        else if (arr[i] == 1) count1++;
+        else if (arr[i] == 2) count2++;
+    }
+
+    // Update the array with sorted elements
+    int index = 0;
+    for (int i = 0; i < count0; i++) arr[index++] = 0;
+    for (int i = 0; i < count1; i++) arr[index++] = 1;
+    for (int i = 0; i < count2; i++) arr[index++] = 2;
+
+    // Output the sorted array
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
